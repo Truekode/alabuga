@@ -91,43 +91,43 @@ export function useHistory(edgeId: string | undefined) {
                     Pump1_Wref_spm: [
                         {
                             ts: now - 120,
-                            value: 9
+                            value: 9,
                         },
                         {
                             ts: now - 60,
-                            value: 10
+                            value: 10,
                         },
                         {
                             ts: now,
-                            value: 11
+                            value: 11,
                         },
                     ],
                     Pump1_Wfbk_spm: [
                         {
                             ts: now - 120,
-                            value: 7
+                            value: 7,
                         },
                         {
                             ts: now - 60,
-                            value: 8
+                            value: 8,
                         },
                         {
                             ts: now,
-                            value: 9
+                            value: 9,
                         },
                     ],
                     Jet_active: [
                         {
                             ts: now - 120,
-                            value: 0
+                            value: 0,
                         },
                         {
                             ts: now - 60,
-                            value: 1
+                            value: 1,
                         },
                         {
                             ts: now,
-                            value: 1
+                            value: 1,
                         },
                     ],
                 }

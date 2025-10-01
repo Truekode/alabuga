@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import { HomePage } from '@pages/home'
-import { EdgesPage, CurrentsPage, HistoriesPage } from '@pages/edges'
+import { CurrentsPage, EdgesPage, HistoriesPage } from '@pages/edges'
 import { NormalizePage } from '@pages/tests'
 import { AppLayout } from '@app/ui/AppLayout'
 
@@ -11,7 +10,7 @@ const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                element: <HomePage/>
+                element: <EdgesPage/>
             },
             {
                 path: '/edges',
