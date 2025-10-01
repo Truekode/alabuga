@@ -1,0 +1,80 @@
+{
+  "compilerOptions": {
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "skipLibCheck": true,
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@app": [
+        "src/app/index.ts"
+      ],
+      "@processes/*": [
+        "src/processes/*"
+      ],
+      "@processes": [
+        "src/processes/index.ts"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@pages": [
+        "src/pages/index.ts"
+      ],
+      "@widgets/*": [
+        "src/widgets/*"
+      ],
+      "@widgets": [
+        "src/widgets/index.ts"
+      ],
+      "@features/*": [
+        "src/features/*"
+      ],
+      "@features": [
+        "src/features/index.ts"
+      ],
+      "@entities/*": [
+        "src/entities/*"
+      ],
+      "@entities": [
+        "src/entities/index.ts"
+      ],
+      "@shared/*": [
+        "src/shared/*"
+      ],
+      "@shared": [
+        "src/shared/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
