@@ -14,7 +14,7 @@ const Dot = styled.span<{ $active: boolean }>`
     width: 12px;
     height: 12px;
     border-radius: 999px;
-    background: ${({$active}) => ($active ? '#ef4444' : '#10b981')};
+    background: ${({$active}) => ($active ? 'var(--color-critical)' : 'var(--color-success)')};
     box-shadow: 0 0 0 1px var(--color-border) inset;
 `
 
@@ -23,7 +23,7 @@ const Label = styled.span`
 `
 
 const State = styled.span<{ $active: boolean }>`
-    color: ${({$active}) => ($active ? '#ef4444' : '#10b981')};
+    color: ${({$active}) => ($active ? 'var(--color-critical)' : 'var(--color-success)')};
     font-weight: 600;
 `
 

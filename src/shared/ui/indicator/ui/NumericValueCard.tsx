@@ -8,6 +8,7 @@ const Card = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+    flex-direction: column;
 `
 
 const Label = styled.div`

@@ -10,48 +10,115 @@ const Card = styled.div`
     justify-items: center;
 `
 
+const ValueText = styled.div`
+    color: var(--color-text);
+    font-weight: 600;
+`
+const LabelText = styled.div`
+    color: var(--color-muted);
+    font-size: 12px;
+`
+
 export function NumericGauge({
                                  label,
                                  value,
                                  unit,
                                  range,
                                  keyRaw,
+                                 orientation = 'left',
                              }: {
     label: string
     value: number
     unit?: string
     range?: { min: number; max: number }
     keyRaw?: string
+    orientation?: 'top' | 'bottom' | 'left' | 'right'
 }) {
     const min = range?.min ?? 0
     const max = range?.max ?? 100
-    const pct = Math.max(0, Math.min(1, (value - min) / (max - min)))
-    const angle = -120 + pct * 240
-    const w = 140
-    const h = 80
-    const cx = w / 2
-    const cy = h
-    const r = 70
-    const x = cx + r * Math.cos((angle * Math.PI) / 180)
-    const y = cy + r * Math.sin((angle * Math.PI) / 180)
+    const clamp01 = (n: number) => Math.max(0, Math.min(1, n))
+    const pct = clamp01((value - min) / Math.max(1e-9, max - min))
+    const [startDeg, endDeg] = (() => {
+        switch (orientation) {
+            case 'bottom':
+                return [60, 300]
+            case 'left':
+                return [150, 390]
+            case 'right':
+                return [-30, 210]
+            case 'top':
+            default:
+                return [-120, 120]
+        }
+    })()
+    const currDeg = startDeg + pct * (endDeg - startDeg)
+
+    const stroke = 12
+    const pad = stroke
+    const r = 80
+    const cx = r + pad
+    const cy = r + pad
+    const w = cx + r + pad
+    const h = cy + r + pad
+
+    const toRad = (deg: number) => (deg * Math.PI) / 180
+    const polar = (deg: number) => ({
+        x: cx + r * Math.cos(toRad(deg)),
+        y: cy + r * Math.sin(toRad(deg)),
+    })
+    const arcPath = (a1: number, a2: number) => {
+        const p1 = polar(a1)
+        const p2 = polar(a2)
+        const largeArc = Math.abs(a2 - a1) > 180 ? 1 : 0
+        const sweep = a2 > a1 ? 1 : 0
+        return `M ${p1.x} ${p1.y} A ${r} ${r} 0 ${largeArc} ${sweep} ${p2.x} ${p2.y}`
+    }
+    const needleLen = r - 16
+    const needle = {
+        x: cx + needleLen * Math.cos(toRad(currDeg)),
+        y: cy + needleLen * Math.sin(toRad(currDeg)),
+    }
     return (
         <Card title={keyRaw || label}>
-            <svg width={w} height={h + 10}>
+            <svg
+                viewBox={`0 0 ${w} ${h}`}
+                preserveAspectRatio="xMidYMid meet"
+                style={{
+                    width: '100%',
+                    height: 'auto',
+                    display: 'block'
+                }}
+            >
                 <path
-                    d={`M 10 ${h} A ${r} ${r} 0 0 1 ${w - 10} ${h}`}
+                    d={arcPath(startDeg, endDeg)}
                     stroke="var(--color-border)"
-                    strokeWidth={6}
+                    strokeWidth={stroke}
+                    strokeLinecap="round"
                     fill="none"
                 />
-                <line x1={cx} y1={cy} x2={x} y2={y} stroke="var(--color-primary)" strokeWidth={4}/>
+                <path
+                    d={arcPath(startDeg, currDeg)}
+                    stroke="var(--color-primary)"
+                    strokeWidth={stroke}
+                    strokeLinecap="round"
+                    fill="none"
+                />
+                <circle cx={cx} cy={cy} r={stroke / 2} fill="var(--color-border)"/>
+                <line
+                    x1={cx}
+                    y1={cy}
+                    x2={needle.x}
+                    y2={needle.y}
+                    stroke="var(--color-primary)"
+                    strokeWidth={stroke * 0.35}
+                    strokeLinecap="round"
+                />
             </svg>
-            <div style={{
-                color: 'var(--color-text)',
-                fontWeight: 600
-            }}>
-                {label}: {value}
+            <ValueText>
+                {value}
                 {unit ? ` ${unit}` : ''}
-            </div>
+            </ValueText>
+            <LabelText>{label}</LabelText>
         </Card>
     )
 }

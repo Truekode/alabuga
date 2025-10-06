@@ -9,6 +9,8 @@ export const GlobalStyle = createGlobalStyle`
         --color-muted: #9ca3af;
         --color-primary: #6366f1;
         --color-primary-weak: #eef2ff;
+        --color-critical: #ef4444;
+        --color-success: #10b981;
         --radius-sm: 6px;
         --radius-md: 10px;
         --space-1: 4px;
@@ -42,6 +44,8 @@ export const theme = {
         muted: 'var(--color-muted)',
         primary: 'var(--color-primary)',
         primaryWeak: 'var(--color-primary-weak)',
+        critical: 'var(--color-critical)',
+        success: 'var(--color-success)',
     },
     radius: {
         sm: 'var(--radius-sm)',
