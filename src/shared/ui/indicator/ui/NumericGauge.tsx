@@ -86,7 +86,7 @@ export function NumericGauge({
                 style={{
                     width: '100%',
                     height: 'auto',
-                    display: 'block'
+                    display: 'block',
                 }}
             >
                 <path

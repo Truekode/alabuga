@@ -36,25 +36,25 @@ export const GlobalStyle = createGlobalStyle`
 `
 
 export const theme = {
-    colors: {
-        bg: 'var(--color-bg)',
-        surface: 'var(--color-surface)',
-        border: 'var(--color-border)',
-        text: 'var(--color-text)',
-        muted: 'var(--color-muted)',
-        primary: 'var(--color-primary)',
-        primaryWeak: 'var(--color-primary-weak)',
-        critical: 'var(--color-critical)',
-        success: 'var(--color-success)',
-    },
-    radius: {
-        sm: 'var(--radius-sm)',
-        md: 'var(--radius-md)',
-    },
-    space: {
-        1: 'var(--space-1)',
-        2: 'var(--space-2)',
-        3: 'var(--space-3)',
-        4: 'var(--space-4)',
-    },
+  colors: {
+    bg: 'var(--color-bg)',
+    surface: 'var(--color-surface)',
+    border: 'var(--color-border)',
+    text: 'var(--color-text)',
+    muted: 'var(--color-muted)',
+    primary: 'var(--color-primary)',
+    primaryWeak: 'var(--color-primary-weak)',
+    critical: 'var(--color-critical)',
+    success: 'var(--color-success)',
+  },
+  radius: {
+    sm: 'var(--radius-sm)',
+    md: 'var(--radius-md)',
+  },
+  space: {
+    1: 'var(--space-1)',
+    2: 'var(--space-2)',
+    3: 'var(--space-3)',
+    4: 'var(--space-4)',
+  },
 } as const

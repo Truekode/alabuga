@@ -30,10 +30,12 @@ export function CurrentsPage() {
             </div>
             <TwoCol>
                 <aside>
-                    <CurrentSidebar tags={(data ?? []).map((d) => ({
-                        key: d.key,
-                        label: d.label
-                    }))}/>
+                    <CurrentSidebar
+                        tags={(data ?? []).map((d) => ({
+                            key: d.key,
+                            label: d.label,
+                        }))}
+                    />
                 </aside>
                 <section>
                     {isLoading && <ListSkeleton rows={8}/>}
